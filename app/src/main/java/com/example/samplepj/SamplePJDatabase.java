@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class SamplePJDatabase extends SQLiteOpenHelper {
     public static final String DB_NAME = "sample_pj.db";
     public static final int DB_VERSION = 1;
@@ -59,5 +61,13 @@ public class SamplePJDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + TBL_USER + " WHERE user_name = ? AND password = ?", new String[]{userName, password});
         return c.getCount() > 0;
+    }
+
+    public ArrayList<StatusModal> displayStatus(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cs = db.rawQuery("SELECT * FROM " + TBL_STATUS ,null);
+        ArrayList<StatusModal> statusModalArrayList = new ArrayList<>();
+
+        return statusModalArrayList;
     }
 }
